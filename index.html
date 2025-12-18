@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <script>
+        window.huggingface = { variables: { "SPACE_CREATOR_USER_ID": "bharathk" } };
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfolio of Bharath K, Pharmaceutical Technology Student & Creative Media Enthusiast">
+    <meta name="keywords"
+        content="Pharmaceutical Technology, Formulation, Fermentation, Graphic Design, Video Editing, Portfolio">
+    <meta name="author" content="Bharath K">
+
+    <meta property="og:title" content="Bharath K | Pharmaceutical Technology Portfolio">
+    <meta property="og:description"
+        content="Portfolio showcasing pharmaceutical projects, formulations, and creative media work">
+
+    <title>Bharath K | Portfolio</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-primary: #0f0f1a;
+            --bg-secondary: #1a1a2e;
+            --text-primary: #e2e8f0;
+            --text-secondary: #cbd5e0;
+            --accent-color: #8a2be2;
+            --accent-light: #c084fc;
+        }
+
+        /* LIGHT THEME */
+        [data-theme="light"] {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #e2e8f0;
+            --text-primary: #edeeef;
+            --text-secondary: #8f9297;
+            --accent-color: #7c3aed;
+            --accent-light: #8b5cf6;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            cursor: none;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .cursor-trail {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.8), transparent);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+
+        .glow {
+            text-shadow: 0 0 10px var(--accent-light);
+        }
+
+        .glow-box {
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        #loading {
+            position: fixed;
+            inset: 0;
+            background: #0f0f1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(138, 43, 226, 0.3);
+            border-top-color: #8a2be2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .connect-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: #e5e7eb;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
+        }
+
+        .connect-icon:hover {
+            transform: translateY(-6px) scale(1.1);
+            box-shadow: 0 0 25px rgba(192, 132, 252, 0.9);
+        }
+
+        /* Individual glow colors */
+        .connect-icon.github {
+            border-color: #a78bfa;
+        }
+
+        .connect-icon.linkedin {
+            border-color: #3b82f6;
+        }
+
+        .connect-icon.email {
+            border-color: #f87171;
+        }
+
+        .connect-icon.whatsapp {
+            border-color: #22c55e;
+        }
+
+        .connect-icon.emoji {
+            border-color: #facc15;
+            font-size: 26px;
+        }
+
+        /* About Title */
+        .about-title {
+            color: #c084fc;
+            text-shadow: 0 0 20px rgba(192, 132, 252, 0.8);
+        }
+
+        /* About Card */
+        .about-card {
+            background: rgba(15, 15, 30, 0.75);
+            border-radius: 20px;
+            border: 1px solid rgba(138, 43, 226, 0.4);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.25);
+            backdrop-filter: blur(6px);
+        }
+
+        /* Profile Image Glow */
+        .profile-glow {
+            border: 4px solid rgba(138, 43, 226, 0.6);
+            box-shadow: 0 0 25px rgba(192, 132, 252, 0.9);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section {
+            scroll-margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- LOADER -->
+    <div id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- CURSOR -->
+    <div class="cursor-trail" id="cursor"></div>
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-sm z-10">
+        <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+            <h1 class="text-xl font-bold text-violet-400">Bharath K</h1>
+
+            <div class="space-x-6 hidden md:flex">
+                <a href="#about" class="hover:text-violet-400">About</a>
+                <a href="#skills" class="hover:text-violet-400">Skills</a>
+                <a href="#projects" class="hover:text-violet-400">Projects</a>
+                <a href="#experience" class="hover:text-violet-400">Experience</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <button id="themeToggle"
+        class="fixed top-20 right-4 w-10 h-10 rounded-full bg-gray-800 border border-violet-500 flex items-center justify-center z-50">
+        <i class="fas fa-moon text-violet-400"></i>
+    </button>
+
+
+
+
+    <!-- HERO -->
+    <section class="pt-32 pb-20 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold glow">
+            Hi, I'm <span class="text-violet-400">Bharath K</span>
+        </h1>
+
+        <p class="mt-4 text-xl text-violet-300" id="typewriter"></p>
+
+        <p class="max-w-2xl mx-auto mt-6 text-gray-300">
+            Pharmaceutical Technology student with hands-on experience in formulation,
+            fermentation, and quality analysis — blending science with creativity.
+        </p>
+    </section>
+    <div class="mt-10 flex justify-center gap-4">
+        <a href="BHARATH Resume.pdf" download
+            class="px-6 py-3 bg-violet-600 hover:bg-violet-700 rounded-full text-white font-semibold transition-all glow-box">
+            <i class="fas fa-download mr-2"></i>Download Resume
+        </a>
+
+        <a href="#contact"
+            class="px-6 py-3 border border-violet-500 rounded-full text-violet-400 hover:bg-violet-900/30 transition-all">
+            Contact Me
+        </a>
+    </div>
+
+
+    <!-- ABOUT -->
+    <section id="about" class="py-16 relative" data-aos="fade-up">
+
+        <!-- Section Title -->
+        <h2 class="text-center text-3xl md:text-4xl font-bold mb-10 about-title">
+            About Me
+        </h2>
+
+        <!-- Card -->
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="about-card flex flex-col md:flex-row items-center gap-8 p-8">
+
+                <!-- Profile Image -->
+                <div class="flex-shrink-0">
+                    <img src="profile.jpg" alt="Bharath K" class="w-44 h-44 rounded-full object-cover profile-glow">
+                </div>
+
+                <!-- Content -->
+                <div class="text-gray-300 text-lg space-y-5">
+
+                    <p>
+                        Hello, I'm <span class="text-violet-400 font-semibold">👨‍🔬 Bharath K</span>,
+                        a passionate <span class="text-violet-300">Pharmaceutical Technology</span> student
+                        from <span class="text-violet-300">🇮🇳 India</span>.
+                    </p>
+
+                    <p>
+                        🎓 Currently pursuing <span class="text-violet-400 font-medium">B.Tech in Pharmaceutical
+                            Technology</span>,
+                        with hands-on experience in 🧪 formulation, 🧬 fermentation,
+                        and ⚗️ quality analysis. Alongside academics, I actively work in
+                        🎥 video editing, 🎨 graphic design, and 📱 digital media.
+                    </p>
+
+                    <p>
+                        🤝 Let’s collaborate to create impactful
+                        🌿 science-driven solutions and 🎬 visually engaging content
+                        that connects with people and brands.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-12 bg-gray-900/50">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-violet-400 mb-8">My Skills</h2>
+
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-violet-300 mb-4">Pharmaceutical</h3>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <div class="glow-box p-6 rounded-xl">
+                        <h4 class="font-semibold text-violet-400 mb-2">Pharmaceutical Instruments</h4>
+                        <ul class="text-gray-300 text-sm space-y-1 list-disc list-inside">
+                            <li>pH Meter</li>
+                            <li>Viscometer</li>
+                            <li>Weighing Balance</li>
+                            <li>Basic Lab Equipment Handling</li>
+                        </ul>
+                    </div>
+
+                    <div class="glow-box p-6 rounded-xl">
+                        <h4 class="font-semibold text-violet-400 mb-2">Quality Analysis</h4>
+                        <ul class="text-gray-300 text-sm space-y-1 list-disc list-inside">
+                            <li>Quality Control Basics</li>
+                            <li>Sample Testing</li>
+                            <li>Documentation & Reporting</li>
+                            <li>Standard Operating Procedures (SOP)</li>
+                        </ul>
+                    </div>
+
+                    <div class="glow-box p-6 rounded-xl">
+                        <h4 class="font-semibold text-violet-400 mb-2">Natural Formulation</h4>
+                        <ul class="text-gray-300 text-sm space-y-1 list-disc list-inside">
+                            <li>Herbal Ingredient Selection</li>
+                            <li>Cosmetic Formulation</li>
+                            <li>Face Wash & Lip Balm Preparation</li>
+                            <li>Stability Observation</li>
+                        </ul>
+                    </div>
+
+                    <div class="glow-box p-6 rounded-xl">
+                        <h4 class="font-semibold text-violet-400 mb-2">Fermentation Technology</h4>
+                        <ul class="text-gray-300 text-sm space-y-1 list-disc list-inside">
+                            <li>Natural Fermentation Process</li>
+                            <li>Microbial Culture Handling</li>
+                            <li>pH & Temperature Monitoring</li>
+                            <li>Ginger Beer Production</li>
+                        </ul>
+                    </div>
+
+                </div>
+                <h3 class="text-xl font-semibold text-violet-300 mb-4 mt-10">Creative Media</h3>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <div class="glow-box p-6 rounded-xl">
+                        <h4 class="font-semibold text-violet-400 mb-2">Graphic Design</h4>
+                        <ul class="text-gray-300 text-sm space-y-1 list-disc list-inside">
+                            <li>Canva</li>
+                            <li>Social Media Posters</li>
+                            <li>Brand Creatives</li>
+                            <li>Thumbnail Design</li>
+                        </ul>
+                    </div>
+
+                    <div class="glow-box p-6 rounded-xl">
+                        <h4 class="font-semibold text-violet-400 mb-2">Video Editing</h4>
+                        <ul class="text-gray-300 text-sm space-y-1 list-disc list-inside">
+                            <li>YouTube Video Editing</li>
+                            <li>Reels & Short-form Content</li>
+                            <li>Transitions & Effects</li>
+                            <li>Audio Sync & Color Correction</li>
+                        </ul>
+                    </div>
+
+                    <div class="glow-box p-6 rounded-xl">
+                        <h4 class="font-semibold text-violet-400 mb-2">Cinematography</h4>
+                        <ul class="text-gray-300 text-sm space-y-1 list-disc list-inside">
+                            <li>Camera Angles & Framing</li>
+                            <li>Lighting Basics</li>
+                            <li>Mobile & DSLR Shooting</li>
+                            <li>Storytelling Through Visuals</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-12" data-aos="fade-up">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-violet-400 text-center mb-8">
+                Freelancing Experience & Projects
+            </h2>
+
+            <div class="space-y-6">
+
+                <div class="glow-box p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold text-violet-300">
+                        Video Editor – Dream Catcher Education
+                    </h3>
+                    <a href="https://youtube.com/@collegetimezz?si=Ebtr0vyoe4BlIcxh"
+                        class="text-violet-400 hover:text-violet-300">
+                        View on Youtube
+                    </a>
+                    <p class="text-gray-300 mt-2">
+                        Edited <strong>40+ educational YouTube videos</strong>, focusing on clear storytelling,
+                        engaging visuals, transitions, and viewer retention.
+                    </p>
+                </div>
+
+                <div class="glow-box p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold text-violet-300">
+                        Social Media Manager – Teezo Clothing Brand
+                    </h3>
+                    <a href="https://www.instagram.com/teezzo_officials?igsh=MTFqZHJ3bGwyOG10YQ=="
+                        class="text-violet-400 hover:text-violet-300">
+                        View on Instagram
+                    </a>
+                    <p class="text-gray-300 mt-2">
+                        Handled <strong>social media management and digital marketing</strong>,
+                        creating promotional content and brand-focused visuals to improve online presence.
+                        (Teezzo) social media manager_content creator_video creator_digital marketer
+                    </p>
+                </div>
+
+                <div class="glow-box p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold text-violet-300">
+                        Video Creator – Trichyfort Instagram Page
+                    </h3>
+                    <a href="https://www.instagram.com/trichy_fort?igsh=am0zMndlYXZ1MnN2"
+                        class="text-violet-400 hover:text-violet-300">
+                        View on Instagram
+                    </a>
+                    <p class="text-gray-300 mt-2">
+                        Video creator for trichy fort instagram page
+                        Worked as a video creator producing <strong>reels and short-form content</strong>
+                        to engage local audiences and improve reach.
+                    </p>
+                </div>
+
+                <div class="glow-box p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold text-violet-300">
+                        Personal Content Creator – Writer
+                    </h3>
+
+                    <p class="text-gray-300 mt-2">
+                        Created <strong>reels, posts, and creative videos</strong> for a writer,
+                        transforming written ideas into visually engaging content.
+                    </p>
+                </div>
+
+                <div class="glow-box p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold text-violet-300">
+                        Founder – CADS (cads.productions)
+                    </h3>
+                    <a href="https://www.instagram.com/cads.productions?igsh=MTJwazAxc2ppenVtcA=="
+                        class="text-violet-400 hover:text-violet-300">
+                        View on Instagram
+                    </a>
+                    <p class="text-gray-300 mt-2">
+                        Founded <strong>CADS</strong>, a freelancing production venture handling
+                        creative projects including video production, editing, branding,
+                        and digital media solutions for clients.
+                    </p>
+
+                </div>
+                <div class="glow-box p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold text-violet-300">Internship & Certification in Pharmaceutical
+                        Biotechnology</h3>
+                    <p class="org">Institute of Innovations (MSME – Govt. of India)</p>
+                    <p class="date">17 July – 31 July 2025</p>
+                    <ul>
+                        <li>Completed a 15-day internship focused on Pharmaceutical Biotechnology</li>
+                        <li>Gained practical exposure to biotechnological applications in pharma</li>
+                        <li>Certified based on satisfactory performance in final assessment</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-violet-400 text-center mb-8">Projects</h2>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glow-box p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold text-violet-300">Fermentation of Ginger Beer</h3>
+                    <p class="text-gray-300 mt-2">
+                        Developed ginger beer using natural microbial culture while monitoring
+                        pH, temperature, and carbonation levels.
+                    </p>
+                </div>
+
+                <div class="glow-box p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold text-violet-300">Organic Face Wash</h3>
+                    <p class="text-gray-300 mt-2">
+                        Formulated herbal face wash using sandalwood, tulsi,
+                        aloe vera, and rose water.
+                    </p>
+                </div>
+
+                <div class="glow-box p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold text-violet-300">Organic Lip Balm</h3>
+                    <p class="text-gray-300 mt-2">
+                        Created natural lip balm using pomegranate extract
+                        for color, fragrance, and nourishment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CERTIFICATES -->
+    <section id="certificates" class="py-12 bg-gray-900/50">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-violet-400 mb-8">Certifications</h2>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glow-box rounded-xl overflow-hidden hover:scale-105 transition-all">
+                    <img src="Cert1.jpg" alt="Molecular Docking" class="w-full h-48 object-cover">
+                    <p class="py-3 text-gray-300">Homology Modulation & Molecular Docking</p>
+                </div>
+
+                <div class="glow-box rounded-xl overflow-hidden hover:scale-105 transition-all">
+                    <img src="Cert2.png" alt="Nanoparticles" class="w-full h-48 object-cover">
+                    <p class="py-3 text-gray-300">Nanoparticle Synthesis & Drug Delivery</p>
+                </div>
+
+                <div class="glow-box rounded-xl overflow-hidden hover:scale-105 transition-all">
+                    <img src="cert3.jpg" alt="Viscometry" class="w-full h-48 object-cover">
+                    <p class="py-3 text-gray-300">Sources of Viscom Workshop</p>
+                </div>
+
+                <div class="glow-box rounded-xl overflow-hidden hover:scale-105 transition-all">
+                    <img src="cert4.jpg" alt="Viscometry" class="w-full h-48 object-cover">
+                    <p class="py-3 text-gray-300">Internship</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LET'S CONNECT -->
+    <div class="mt-10 text-center">
+
+        <h3 class="text-3xl font-bold text-violet-400 mb-8 glow">
+            Let's Connect
+        </h3>
+
+        <div class="flex justify-center gap-6">
+
+            <!-- GitHub -->
+            <a href="https://github.com/BharathK1508" target="_blank" class="connect-icon github">
+                <i class="fab fa-github"></i>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/bharath-krishnamoorthy-75a875258/" target="_blank"
+                class="connect-icon linkedin">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:bharathkrishnamoorthy1508@gmail.com" class="connect-icon email">
+                <i class="fas fa-envelope"></i>
+            </a>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/918610974923" target="_blank" class="connect-icon whatsapp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </div>
+
+
+
+
+    <footer class="py-6 text-center text-gray-400">
+        © 2025 Bharath K. All Rights Reserved.All Content is Protected.
+    </footer>
+
+    <!-- JS -->
+    <script>
+        window.onload = () => document.getElementById("loading").style.display = "none";
+
+        const cursor = document.getElementById("cursor");
+        document.addEventListener("mousemove", e => {
+            cursor.style.left = e.clientX + "px";
+            cursor.style.top = e.clientY + "px";
+        });
+
+        const texts = [
+            "Pharmaceutical Technology Student",
+            "Formulation & Fermentation Enthusiast",
+            "Creative Designer & Video Editor"
+        ];
+
+        let index = 0;
+        let char = 0;
+        const el = document.getElementById("typewriter");
+
+        function type() {
+            if (char < texts[index].length) {
+                el.textContent += texts[index][char++];
+                setTimeout(type, 80);
+            } else {
+                setTimeout(erase, 2000);
+            }
+        }
+
+        function erase() {
+            if (char > 0) {
+                el.textContent = texts[index].substring(0, --char);
+                setTimeout(erase, 40);
+            } else {
+                index = (index + 1) % texts.length;
+                setTimeout(type, 400);
+            }
+        }
+
+        type();
+
+        const toggle = document.getElementById("themeToggle");
+        const html = document.documentElement;
+
+        // Set default theme
+        if (!html.dataset.theme) {
+            html.dataset.theme = "dark";
+        }
+
+        toggle.addEventListener("click", () => {
+            const currentTheme = html.dataset.theme;
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+            html.dataset.theme = newTheme;
+            toggle.innerHTML =
+                newTheme === "light"
+                    ? '<i class="fas fa-sun text-yellow-400"></i>'
+                    : '<i class="fas fa-moon text-violet-400"></i>';
+        });
+    </script>
+
+</body>
+
+</html>
